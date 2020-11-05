@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smart.tx.mapper.ProductStockMapper">
+    <resultMap id="BaseResultMap" type="com.smart.tx.entity.ProductStock">
+        <id property="stockId" column="stock_id"/>
+        <result property="productId" column="product_id"/>
+        <result property="total" column="total"/>
+        <result property="stock1" column="stock1"/>
+    </resultMap>
+    <select id="selectByProductIds" resultMap="BaseResultMap">
+        SELECT *
+        FROM product_stock
+                WHERE product_id IN
+        <foreach collection="ids" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </select>
+</mapper>

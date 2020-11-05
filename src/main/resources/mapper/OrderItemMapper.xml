@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smart.tx.mapper.OrderItemMapper">
+    <resultMap id="BaseResultMap" type="com.smart.tx.entity.OrderItem">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="order_id" jdbcType="BIGINT" property="orderId"/>
+        <result column="order_no" jdbcType="VARCHAR" property="orderNo"/>
+        <result column="product_id" jdbcType="BIGINT" property="productId"/>
+        <result column="product_pic" jdbcType="VARCHAR" property="productPic"/>
+        <result column="product_name" jdbcType="VARCHAR" property="productName"/>
+        <result column="product_price" jdbcType="DECIMAL" property="productPrice"/>
+        <result column="product_quantity" jdbcType="INTEGER" property="productQuantity"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id,
+        order_id,
+        order_no,
+        product_id,
+        product_pic,
+        product_name,
+        product_price,
+        product_quantity
+    </sql>
+    <insert id="insert">
+        INSERT INTO t_order_item (order_id, order_no, product_id, product_pic, product_name, product_price,
+                                  product_quantity)
+        VALUES (#{orderItem.orderId}, #{orderItem.orderNo}, #{orderItem.productPic}, #{orderItem.productName},
+                #{orderItem.productPrice})
+    </insert>
+</mapper>
